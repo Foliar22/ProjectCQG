@@ -54,14 +54,29 @@ namespace ProjectCQG
 			List<string> listInserts = Inserts(listSplits);
 			//Deletes
 			List<string> listDelites = Deletes(listSplits);
+			candidates = Cadidates(listInserts);
+			foreach (var candidat in Cadidates(listDelites))
+			{
+				candidates.Add(candidat.Key, candidat.Value);
+			}
+			if (candidates.Count > 0)
+			{
+				return result = candidates.OrderBy(x => x.Value).Select(x => x.Key).ToArray();
+			}
+			List<string> listInsertsAndDeletes = new List<string>();
+			foreach (string wordWithInsert in listInserts)
+			{
+				var splitsInserts = Splits(wordWithInsert);
+				listInsertsAndDeletes.AddRange(Deletes(splitsInserts));
+			}
+			candidates = Cadidates(listInsertsAndDeletes);
+			if (candidates.Count > 0)
+			{
+				return result = candidates.OrderBy(x => x.Value).Select(x => x.Key).ToArray();
+			}
+			var resultWord = "{" + word + "?}";
+			return result = new string[] { resultWord };
 
-
-
-
-
-
-
-			return result = new string[] {" "};
 		}
 		private Dictionary<string, int> Cadidates(List<string> listCadidates)
 		{
