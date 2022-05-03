@@ -57,7 +57,20 @@ namespace ProjectCQG
 			}
 			return inserts;
 		}
-
+		private List<string> Deletes(List<Tuple<string, string>> splits)
+		{
+			var deletes = new List<string>();
+			for (int i = 0; i < splits.Count; i++)
+			{
+				string a = splits[i].Item1;
+				string b = splits[i].Item2;
+				if (!string.IsNullOrEmpty(b))
+				{
+					deletes.Add(a + b.Substring(1));
+				}
+			}
+			return deletes;
+		}
 
 
 	}
