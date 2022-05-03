@@ -1,11 +1,13 @@
 ﻿
-using ProjectCQG;
-
-class Program
+namespace ProjectCQG
 {
-    static void Main(string[] args)
+    class Program
     {
-        var spelling = new Spelling();
-        string[] word = { "hte", "rame", "in", "pain", "fells", "mainy", "oon", "teh", "lain", "was", "hints", "pliant" };
+        static void Main(string[] args)
+        {
+            var spelling = new Spelling();
+            string[] word = { "hte", "rame", "in", "pain", "fells", "mainy", "oon", "teh", "lain", "was", "hints", "pliant" };
+        }
     }
+
 }
