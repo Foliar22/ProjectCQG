@@ -8,8 +8,9 @@ namespace ProjectCQG
 {
     public class Data
     {
-        public Data()
+        public Data(string inputPath, string dictionaryPath, string wrongWordsPath)
         {
+            ReadAndWrite(inputPath, dictionaryPath, wrongWordsPath);
         }
 
         private void ReadAndWrite(string path, string dictionaryPath, string wrongWordsPath)
