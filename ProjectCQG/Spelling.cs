@@ -43,6 +43,20 @@ namespace ProjectCQG
 			}
 			return splits;
 		}
+		private List<string> Inserts(List<Tuple<string, string>> splits)
+		{
+			var inserts = new List<string>();
+			for (int i = 0; i < splits.Count; i++)
+			{
+				string a = splits[i].Item1;
+				string b = splits[i].Item2;
+				for (char c = 'a'; c <= 'z'; c++)
+				{
+					inserts.Add(a + c + b);
+				}
+			}
+			return inserts;
+		}
 
 
 
