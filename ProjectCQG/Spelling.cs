@@ -47,9 +47,33 @@ namespace ProjectCQG
 				result = new string[] { word };
 				return result;
 			}
+			//Unknow
+			List<Tuple<string, string>> listSplits = Splits(word);
+			Dictionary<string, int> candidates = new Dictionary<string, int>();
+			//Inserts
+			List<string> listInserts = Inserts(listSplits);
+			//Deletes
+			List<string> listDelites = Deletes(listSplits);
+
+
+
+
+
+
+
 			return result = new string[] {" "};
 		}
-			private List<Tuple<string, string>> Splits(string word)
+		private Dictionary<string, int> Cadidates(List<string> listCadidates)
+		{
+			Dictionary<string, int> result = new Dictionary<string, int>();
+			foreach (string wordVariation in listCadidates)
+			{
+				if (_dictionary.ContainsKey(wordVariation) && !result.ContainsKey(wordVariation))
+					result.Add(wordVariation, _dictionary[wordVariation]);
+			}
+			return result;
+		}
+		private List<Tuple<string, string>> Splits(string word)
 		{
 			var splits = new List<Tuple<string, string>>();
 			for (int i = 0; i < word.Length; i++)
