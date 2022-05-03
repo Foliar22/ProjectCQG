@@ -67,9 +67,9 @@ namespace ProjectCQG
 			//Inserts
 			List<string> listInserts = Inserts(listSplits);
 			//Deletes
-			List<string> listDelites = Deletes(listSplits);
+			List<string> listDeletes = Deletes(listSplits);
 			candidates = Cadidates(listInserts);
-			foreach (var candidat in Cadidates(listDelites))
+			foreach (var candidat in Cadidates(listDeletes))
 			{
 				candidates.Add(candidat.Key, candidat.Value);
 			}
