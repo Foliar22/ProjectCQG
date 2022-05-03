@@ -12,11 +12,11 @@ namespace ProjectCQG
 		private Dictionary<string, int> _dictionary = new Dictionary<string, int>();
 		private static Regex _wordRegex = new Regex("[a-z]+", RegexOptions.Compiled);
 
-		public Spelling()
+		public Spelling(string pathDictionary)
 		{
 			try
 			{
-				string fileContent = File.ReadAllText(@"D:\dis2.txt");
+				string fileContent = File.ReadAllText(pathDictionary);
 				//List<string> wordList = fileContent.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries).ToList();
 				List<string> wordList = fileContent.Split("\n", StringSplitOptions.RemoveEmptyEntries).ToList();
 				int i = 0;
