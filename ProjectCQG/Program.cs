@@ -1,4 +1,4 @@
-﻿
+﻿using System.Text;
 using System.Text.RegularExpressions;
 
 namespace ProjectCQG
@@ -14,26 +14,37 @@ namespace ProjectCQG
         private static Regex _wordRegex = new Regex("[a-z]+", RegexOptions.Compiled);
         static void Main(string[] args)
         {
-
-
-
             var data = new Data(PathInput, PathDictionary, PathWrongWords);
-            var spelling = new Spelling(PathDictionary);
-            string[] word = { "hte", "rame", "in", "pain", "fells", "mainy", "oon", "teh", "lain", "was", "hints", "pliant" };
-            for (int i = 0; i < word.Length; i++)
+            List<string> wrongWordsList = new List<string>();
+            using (StreamReader sr = new StreamReader(PathWrongWords, Encoding.Default))
             {
-                var correctWordArrey = spelling.Correct(word[i]);
-                if (correctWordArrey.Length > 1)
+                string? line;
+                while ((line = sr.ReadLine()) != null)
                 {
-                    string aggregateString = correctWordArrey.Aggregate("{", (first, next) => $"{first} {next}") + " }";
-                    Console.WriteLine($"{word[i]} => {aggregateString}");
+                    wrongWordsList.Add(line);
                 }
-                else
-                {
-                    Console.WriteLine($"{word[i]} => {correctWordArrey[0]}");
-                }
-
             }
+            var correctList = Correction(wrongWordsList);
+            data.WriteToFile(PathOutput, correctList);
+            Console.WriteLine("Done!");
+
+
+            //var spelling = new Spelling(PathDictionary);
+            //string[] word = { "hte", "rame", "in", "pain", "fells", "mainy", "oon", "teh", "lain", "was", "hints", "pliant" };
+            //for (int i = 0; i < word.Length; i++)
+            //{
+            //    var correctWordArrey = spelling.Correct(word[i]);
+            //    if (correctWordArrey.Length > 1)
+            //    {
+            //        string aggregateString = correctWordArrey.Aggregate("{", (first, next) => $"{first} {next}") + " }";
+            //        Console.WriteLine($"{word[i]} => {aggregateString}");
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine($"{word[i]} => {correctWordArrey[0]}");
+            //    }
+
+            //}
         }
 
         private static List<string> Correction(List<string> wrongWordsList)
