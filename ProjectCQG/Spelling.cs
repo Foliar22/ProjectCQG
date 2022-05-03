@@ -14,31 +14,45 @@ namespace ProjectCQG
 
 		public Spelling()
 		{
-			string fileContent = File.ReadAllText(@"D:\dis2.txt");
-			//List<string> wordList = fileContent.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries).ToList();
-			List<string> wordList = fileContent.Split("\n", StringSplitOptions.RemoveEmptyEntries).ToList();
-			int i = 0;
-			foreach (var word in wordList)
+			try
 			{
-				string trimmedWord = word.Trim().ToLower();
-				if (_wordRegex.IsMatch(trimmedWord))
+				string fileContent = File.ReadAllText(@"D:\dis2.txt");
+				//List<string> wordList = fileContent.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries).ToList();
+				List<string> wordList = fileContent.Split("\n", StringSplitOptions.RemoveEmptyEntries).ToList();
+				int i = 0;
+				foreach (var word in wordList)
 				{
-					if (!_dictionary.ContainsKey(trimmedWord))
+					string trimmedWord = word.Trim().ToLower();
+					if (_wordRegex.IsMatch(trimmedWord))
 					{
-						_dictionary.Add(trimmedWord, i);
-					}
+						if (!_dictionary.ContainsKey(trimmedWord))
+						{
+							_dictionary.Add(trimmedWord, i);
+						}
 
+					}
+					i++;
 				}
-				i++;
+			}
+            catch(Exception ex)
+            {
+				Console.WriteLine(ex.InnerException + "\n" + ex.Message + "\n" + ex.TargetSite);
 			}
 		}
 		public string[] Correct(string word)
 		{
 			string[] result;
-			if (string.IsNullOrEmpty(word))
+			try
 			{
-				result = new string[] { word };
-				return result;
+				if (string.IsNullOrEmpty(word))
+				{
+					result = new string[] { word };
+					return result;
+				}
+			}
+			catch (Exception ex)
+            {
+				Console.WriteLine(ex.InnerException + "\n" + ex.Message + "\n" + ex.TargetSite);
 			}
 			word = word.ToLower();
 			//Know
