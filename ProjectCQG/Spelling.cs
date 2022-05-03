@@ -17,8 +17,9 @@ namespace ProjectCQG
 			try
 			{
 				string fileContent = File.ReadAllText(pathDictionary);
+				char[] splits = new char[] { ' ', '\n', '\r' };
 				//List<string> wordList = fileContent.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries).ToList();
-				List<string> wordList = fileContent.Split("\n", StringSplitOptions.RemoveEmptyEntries).ToList();
+				List<string> wordList = fileContent.Split(splits, StringSplitOptions.RemoveEmptyEntries).ToList();
 				int i = 0;
 				foreach (var word in wordList)
 				{
