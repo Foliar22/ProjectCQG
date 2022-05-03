@@ -20,7 +20,11 @@ namespace ProjectCQG
                     string aggregateString = correctWordArrey.Aggregate("{", (first, next) => $"{first} {next}") + " }";
                     Console.WriteLine($"{word[i]} => {aggregateString}");
                 }
-                Console.WriteLine($"{word[i]} => {correctWordArrey[0]}");
+                else
+                {
+                    Console.WriteLine($"{word[i]} => {correctWordArrey[0]}");
+                }
+
             }
         }
     }

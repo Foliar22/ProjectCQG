@@ -28,11 +28,10 @@ namespace ProjectCQG
 					{
 						if (!_dictionary.ContainsKey(trimmedWord))
 						{
-							_dictionary.Add(trimmedWord, i);
+							_dictionary.Add(trimmedWord, i++);
 						}
 
 					}
-					i++;
 				}
 			}
             catch(Exception ex)
