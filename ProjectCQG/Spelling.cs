@@ -32,8 +32,24 @@ namespace ProjectCQG
 				i++;
 			}
 		}
-
-		private List<Tuple<string, string>> Splits(string word)
+		public string[] Correct(string word)
+		{
+			string[] result;
+			if (string.IsNullOrEmpty(word))
+			{
+				result = new string[] { word };
+				return result;
+			}
+			word = word.ToLower();
+			//Know
+			if (_dictionary.ContainsKey(word))
+			{
+				result = new string[] { word };
+				return result;
+			}
+			return result = new string[] {" "};
+		}
+			private List<Tuple<string, string>> Splits(string word)
 		{
 			var splits = new List<Tuple<string, string>>();
 			for (int i = 0; i < word.Length; i++)
