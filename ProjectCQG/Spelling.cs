@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProjectCQG
 {
-   public class Spelling
+    public class Spelling
     {
 		private Dictionary<string, int> _dictionary = new Dictionary<string, int>();
 		private static Regex _wordRegex = new Regex("[a-z]+", RegexOptions.Compiled);
@@ -32,5 +32,19 @@ namespace ProjectCQG
 				i++;
 			}
 		}
+
+		private List<Tuple<string, string>> Splits(string word)
+		{
+			var splits = new List<Tuple<string, string>>();
+			for (int i = 0; i < word.Length; i++)
+			{
+				var tuple = new Tuple<string, string>(word.Substring(0, i), word.Substring(i));
+				splits.Add(tuple);
+			}
+			return splits;
+		}
+
+
+
 	}
 }
