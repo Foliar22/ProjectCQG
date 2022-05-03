@@ -10,7 +10,7 @@ namespace ProjectCQG
         private static string PathWrongWords { get; } = $"{_directory}wrongwords.txt";
         static void Main(string[] args)
         {
-            var spelling = new Spelling();
+            var spelling = new Spelling(PathDictionary);
             string[] word = { "hte", "rame", "in", "pain", "fells", "mainy", "oon", "teh", "lain", "was", "hints", "pliant" };
             for (int i = 0; i < word.Length; i++)
             {
