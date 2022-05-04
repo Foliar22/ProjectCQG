@@ -24,7 +24,7 @@ namespace ProjectCQG
                     wrongWordsList.Add(line);
                 }
             }
-            var correctList = Correction(wrongWordsList);
+            var correctList = GetCorrectList(wrongWordsList);
             data.WriteToFile(PathOutput, correctList);
             Console.WriteLine("Done!");
 
@@ -47,7 +47,7 @@ namespace ProjectCQG
             //}
         }
 
-        private static List<string> Correction(List<string> wrongWordsList)
+        private static List<string> GetCorrectList(List<string> wrongWordsList)
         {
             var spelling = new Spelling(PathDictionary);
             List<string> correctList = new List<string>();
