@@ -52,6 +52,7 @@ namespace ProjectCQG
 			catch (Exception ex)
             {
 				Console.WriteLine(ex.InnerException + "\n" + ex.Message + "\n" + ex.TargetSite);
+				return result = new string[] { word }; ;
 			}
 			word = word.ToLower();
 			//Know
@@ -62,9 +63,7 @@ namespace ProjectCQG
 			//Unknow
 			List<Tuple<string, string>> listSplits = Splits(word);
 			Dictionary<string, int> candidates = new Dictionary<string, int>();
-			//Inserts
 			List<string> listInserts = Inserts(listSplits);
-			//Deletes
 			List<string> listDeletes = Deletes(listSplits);
 			candidates = Cadidates(listInserts);
 			foreach (var candidat in Cadidates(listDeletes))
