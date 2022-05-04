@@ -65,8 +65,8 @@ namespace ProjectCQG
 			Dictionary<string, int> candidates = new Dictionary<string, int>();
 			List<string> listInserts = Inserts(listSplits);
 			List<string> listDeletes = Deletes(listSplits);
-			candidates = Cadidates(listInserts);
-			foreach (var candidat in Cadidates(listDeletes))
+			candidates = ConvertToCandidateDictionary(listInserts);
+			foreach (var candidat in ConvertToCandidateDictionary(listDeletes))
 			{
 				candidates.Add(candidat.Key, candidat.Value);
 			}
@@ -80,7 +80,7 @@ namespace ProjectCQG
 				var splitsInserts = Splits(wordWithInsert);
 				listInsertsAndDeletes.AddRange(Deletes(splitsInserts));
 			}
-			candidates = Cadidates(listInsertsAndDeletes);
+			candidates = ConvertToCandidateDictionary(listInsertsAndDeletes);
 			if (candidates.Count > 0)
 			{
 				return result = candidates.OrderBy(x => x.Value).Select(x => x.Key).ToArray();
@@ -89,7 +89,14 @@ namespace ProjectCQG
 			return result = new string[] { resultWord };
 
 		}
-		private Dictionary<string, int> Cadidates(List<string> listCadidates)
+		/// <summary>
+		/// The ConvertToCandidateDictionary method converts a list of candidates into a dictionary
+		/// </summary>
+		/// <param name="listCadidates"> method argument</param>
+		/// <returns>
+		/// Dictionary
+		/// </returns>
+		private Dictionary<string, int> ConvertToCandidateDictionary(List<string> listCadidates)
 		{
 			Dictionary<string, int> result = new Dictionary<string, int>();
 			foreach (string wordVariation in listCadidates)
