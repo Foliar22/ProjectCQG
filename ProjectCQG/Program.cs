@@ -47,6 +47,12 @@ namespace ProjectCQG
             //}
         }
 
+        /// <summary>
+        /// The GetCorrectList method will return the corrected list of words
+        /// </summary>
+        /// <returns>
+        /// List of strings
+        /// </returns>
         private static List<string> GetCorrectList(List<string> wrongWordsList)
         {
             var spelling = new Spelling(PathDictionary);
