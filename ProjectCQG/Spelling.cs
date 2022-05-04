@@ -39,6 +39,12 @@ namespace ProjectCQG
 				Console.WriteLine(ex.InnerException + "\n" + ex.Message + "\n" + ex.TargetSite);
 			}
 		}
+		/// <summary>
+		/// The GetCorrectWords method will return an array of possible correct words
+		/// </summary>
+		/// <returns>
+		/// Array of strings
+		/// </returns>
 		public string[] GetCorrectWords(string word)
 		{
 			string[] result;
