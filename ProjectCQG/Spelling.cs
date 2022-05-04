@@ -46,8 +46,7 @@ namespace ProjectCQG
 			{
 				if (string.IsNullOrEmpty(word))
 				{
-					result = new string[] { word };
-					return result;
+					return result = new string[] { word }; ;
 				}
 			}
 			catch (Exception ex)
@@ -58,8 +57,7 @@ namespace ProjectCQG
 			//Know
 			if (_dictionary.ContainsKey(word))
 			{
-				result = new string[] { word };
-				return result;
+				return result = new string[] { word }; ;
 			}
 			//Unknow
 			List<Tuple<string, string>> listSplits = Splits(word);
