@@ -33,7 +33,7 @@ namespace ProjectCQG
             //string[] word = { "hte", "rame", "in", "pain", "fells", "mainy", "oon", "teh", "lain", "was", "hints", "pliant" };
             //for (int i = 0; i < word.Length; i++)
             //{
-            //    var correctWordArrey = spelling.Correct(word[i]);
+            //    var correctWordArrey = spelling.GetCorrectWords(word[i]);
             //    if (correctWordArrey.Length > 1)
             //    {
             //        string aggregateString = correctWordArrey.Aggregate("{", (first, next) => $"{first} {next}") + " }";
@@ -59,7 +59,7 @@ namespace ProjectCQG
                 {
                     if (_wordRegex.IsMatch(words[i]))
                     {
-                        var correctWordArrey = spelling.Correct(words[i]);
+                        var correctWordArrey = spelling.GetCorrectWords(words[i]);
                         if (correctWordArrey.Length > 1)
                         {
                             words[i] = "{" + correctWordArrey.Aggregate((first, next) => $"{first} {next}") + "} ";

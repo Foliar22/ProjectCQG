@@ -39,7 +39,7 @@ namespace ProjectCQG
 				Console.WriteLine(ex.InnerException + "\n" + ex.Message + "\n" + ex.TargetSite);
 			}
 		}
-		public string[] Correct(string word)
+		public string[] GetCorrectWords(string word)
 		{
 			string[] result;
 			try
