@@ -47,24 +47,25 @@ namespace ProjectCQG
 		/// </returns>
 		public string[] GetCorrectWords(string word)
 		{
+			string[] inputWord = new string[] { word };
 			string[] result;
 			try
 			{
 				if (string.IsNullOrEmpty(word))
 				{
-					return result = new string[] { word }; ;
+					return inputWord;
 				}
 			}
 			catch (Exception ex)
             {
 				Console.WriteLine(ex.InnerException + "\n" + ex.Message + "\n" + ex.TargetSite);
-				return result = new string[] { word }; ;
+				return inputWord;
 			}
 			word = word.ToLower();
 			//Know
 			if (_dictionary.ContainsKey(word))
 			{
-				return result = new string[] { word }; ;
+				return inputWord;
 			}
 			//Unknow
 			List<Tuple<string, string>> listSplits = Splits(word);
@@ -91,7 +92,8 @@ namespace ProjectCQG
 			{
 				return result = candidates.OrderBy(x => x.Value).Select(x => x.Key).ToArray();
 			}
-			var resultWord = "{" + word + "?}";
+
+			var resultWord = "{" + inputWord[0] + "?}";
 			return result = new string[] { resultWord };
 
 		}
