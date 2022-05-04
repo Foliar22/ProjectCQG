@@ -96,7 +96,7 @@ namespace ProjectCQG
 
 		}
 		/// <summary>
-		/// The CheckWordList method will check the list for matches with the dictionary
+		/// The CheckWordList method will check the list of word for matches with the dictionary
 		/// </summary>
 		/// <returns>
 		/// Dictionary of correct words
